@@ -180,7 +180,7 @@ const mostrarProximosPartidos = (partidos) => {
         return;
     }
 
-    partidos.forEach((g, index) => {
+    const generarHTML = (g, index, esClon = false) => {
         const timestamp = g.status.includes('T') ? g.status : g.date;
         const d = new Date(timestamp);
         const fechaAR = d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' });
@@ -189,9 +189,7 @@ const mostrarProximosPartidos = (partidos) => {
         const logoHome = g.home_team.name.toLowerCase().replace(/\s+/g, '');
         const logoVisitor = g.visitor_team.name.toLowerCase().replace(/\s+/g, '');
 
-        const div = document.createElement('div');
-        div.className = `carousel-item ${index === 0 ? 'active' : ''}`;
-        div.innerHTML = `
+        return `
             <div class="partido-item">
                 <div class="equipos-vs">
                     <img src="imgs/${logoHome}.svg" alt="" style="width: 25px; height: 25px;" onerror="this.src='imgs/logo.png'">
@@ -205,6 +203,19 @@ const mostrarProximosPartidos = (partidos) => {
                 </div>
             </div>
         `;
+    };
+
+    partidos.forEach((g, index) => {
+        const div = document.createElement('div');
+        div.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+        div.innerHTML = generarHTML(g, index);
+        contenedorProximos.appendChild(div);
+    });
+
+    partidos.forEach((g, index) => {
+        const div = document.createElement('div');
+        div.className = `carousel-item clon-marquee`; 
+        div.innerHTML = generarHTML(g, index);
         contenedorProximos.appendChild(div);
     });
 };

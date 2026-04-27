@@ -504,7 +504,10 @@ header.navbar {
 }
 
 @media (max-width: 991px) {
-    .hero-section { height: 250px !important; margin-bottom: 0 !important; }
+    .hero-section { 
+        height: 250px !important; 
+        margin-bottom: 0 !important; 
+    }
     
     .aside-flotante {
         background-color: var(--azul-oscuro) !important;
@@ -520,6 +523,8 @@ header.navbar {
         text-align: center !important;
         padding: 10px 0 0 0 !important;
         font-size: 0.9rem !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .partido-item {
@@ -533,7 +538,10 @@ header.navbar {
         color: #ffffff !important;
     }
 
-    .equipos-vs, .equipos-vs span { color: #ffffff !important; white-space: nowrap; }
+    .equipos-vs, .equipos-vs span { 
+        color: #ffffff !important; 
+        white-space: nowrap; 
+    }
 
     .info-tiempo {
         font-size: 0.7rem !important;
@@ -545,7 +553,9 @@ header.navbar {
         white-space: nowrap !important;
     }
 
-    #seccion-equipos, #seccion-jugadores { padding: 0 20px !important; }
+    #seccion-equipos, #seccion-jugadores { 
+        padding: 0 20px !important; 
+    }
 }
 
 @media (max-width: 549px) {
@@ -609,7 +619,7 @@ header.navbar {
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         width: max-content !important; 
-        animation: marqueePartidos 40s linear infinite !important;
+        animation: marqueeInifinito 30s linear infinite !important;
     }
 
     #contenedor-proximos .carousel-item {
@@ -617,17 +627,22 @@ header.navbar {
         flex: 0 0 0px !important; 
         margin: 0 !important;
         opacity: 1 !important;
+        visibility: visible !important;
         border-right: 1px solid rgba(255, 255, 255, 0.1);
+        transform: none !important;
+        transition: none !important;
     }
+
+    .clon-marquee { display: flex !important; }
 
     #contenedor-jugadores .col-12 {
         width: 50% !important;
     }
 }
 
-@keyframes marqueePartidos {
+@keyframes marqueeInifinito {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); } 
+    100% { transform: translateX(-50%); } 
 }
 
 @media (min-width: 992px) {
@@ -645,11 +660,16 @@ header.navbar {
         transition: none !important;
     }
 
+    #contenedor-proximos .clon-marquee {
+        display: none !important;
+    }
+
     .aside-flotante {
         position: sticky;
         top: 20px;
         background-color: white;
         border: 2px solid var(--celeste);
         border-radius: 15px;
+        z-index: 100;
     }
 }
