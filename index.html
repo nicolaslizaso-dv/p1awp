@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizaso, Nicolás - García, Ismael - DWM3AP - Mañana - 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script defer src="main.js"></script>
+</head>
+<body class="bg-light">
+
+    <header class="navbar navbar-expand-lg navbar-dark shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="imgs/logo.png" alt="Logo" id="logo" width="120" class="me-2">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <nav class="navbar-nav ms-auto">
+                    <a class="nav-link text-white" href="index.html">Inicio</a>
+                    <a class="nav-link text-white" href="favoritos.html">Mis Favoritos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section d-flex align-items-center">
+    <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold">NBARG</h1>
+        <p class="lead mb-4">El portal de la NBA en Argentina</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="input-group search-container shadow-lg">
+                    <input type="search" id="busqueda" class="form-control" placeholder="Buscá por Jugador o Equipo...">
+                    <button id="boton-buscar" class="btn btn-primary-custom">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <main class="container-fluid container-lg mt-lg-5 mt-0 pt-0 mb-5 px-0 px-lg-3">
+    <div class="row g-0 g-lg-4"> 
+        
+        <aside class="col-12 col-lg-4 order-1 order-lg-2 px-0 px-lg-3">
+            <div class="aside-flotante shadow-lg">
+                <h2 class="aside-titulo">Próximos Partidos</h2>
+                <div id="carouselPartidos" class="carousel slide" data-bs-ride="carousel">
+                    <div id="contenedor-proximos" class="carousel-inner">
+                        </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="col-12 col-lg-8 order-2 order-lg-1 mt-4 mt-lg-0">
+            <div id="contenedor-error" class="alert alert-danger" style="display: none;" role="alert">
+                <span id="mensaje-error"></span>
+                <button id="boton-reintentar" class="btn btn-outline-danger btn-sm ms-3">Reintentar</button>
+            </div>
+
+            <section id="seccion-equipos" class="mb-5 mt-2" >
+                <h2 class="h4 pb-2 mb-4 text-primary">Equipos NBA</h2>
+                <div id="carruselEquipos" class="carousel slide shadow-sm bg-white rounded p-4" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="contenedor-carrusel"></div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carruselEquipos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carruselEquipos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="seccion-jugadores" class="mb-5">
+                <h2 class="h4 pb-2 mb-4 text-primary">Jugadores</h2>
+                <div id="contenedor-jugadores" class="row g-4"></div>
+                <div class="text-center mt-4">
+                    <button id="btn-ver-mas" class="btn btn-outline-primary d-none">Mostrar más jugadores</button>
+                </div>
+            </section>
+        </div>
+
+        </div>
+    </main>
+
+    <div class="modal fade" id="modal-detalle" tabindex="-1" aria-labelledby="titulo-detalle" data-bs-focus="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-detalle">Detalle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="contenido-detalle" class="modal-body"></div>
+        </div>
+    </div>
+    </div>  
+
+    <div id="loader" class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center bg-white bg-opacity-75" style="z-index: 1050;">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="ms-3 mb-0 fw-bold">Cargando datos de la NBA...</p>
+    </div>
+
+    <footer class="footer-custom mt-auto py-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="footer-logo">
+                <img src="imgs/logo.png" alt="NBArg Logo" width="100">
+            </div>
+            
+            <div class="footer-info text-end text-white">
+                <p class="mb-1"><strong>Integrantes:</strong> Lizaso, Nicolás | García, Ismael</p>
+                <p class="mb-1"><strong>Materia:</strong> Aplicaciones Web Progresivas</p>
+                <p class="mb-0 small text-celeste">DWM3AP | Turno Mañana | 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

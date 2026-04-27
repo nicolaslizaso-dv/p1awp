@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizaso, Nicolás - García, Ismael - DWM3AP - Mañana - 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script defer src="main.js"></script>
+</head>
+<body class="bg-light">
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="imgs/logo.png" alt="Logo" id="logo" width="120"class="me-2">
+            </a>
+            <nav class="nav">
+                <a class="nav-link text-white" href="index.html">Inicio</a>
+                <a class="nav-link text-white" href="favoritos.html">Mis Favoritos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5 titulo-favoritos display-5 fw-bold">Mis Favoritos</h1>
+
+        <div id="contenedor-error" class="alert alert-danger" style="display: none;" role="alert">
+            <span id="mensaje-error"></span>
+            <button id="boton-reintentar" class="btn btn-outline-danger btn-sm ms-3">Reintentar</button>
+        </div>
+
+        <section id="equipos-favoritos" class="mb-5">
+            <h2 class="h4 border-bottom pb-2 mb-4 text-primary">Mis Equipos</h2>
+            <div id="contenedor-equipos-favoritos" class="row g-4"></div>
+        </section>
+        
+        <div class="modal fade" id="modal-detalle" tabindex="-1" aria-labelledby="titulo-detalle" data-bs-focus="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titulo-detalle">Detalle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="contenido-detalle" class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+
+<div id="loader" class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center bg-white bg-opacity-75" style="z-index: 1050;">
+    <div class="spinner-border text-primary" role="status"></div>
+</div>
+
+        <section id="equipo-ideal" class="mb-5">
+            <h2 class="h4 border-bottom pb-2 mb-4 text-success">Mi Draft</h2>
+            <div id="contenedor-jugadores-favoritos" class="row g-4"></div>
+        </section>
+
+        <div id="mensaje-vacio" class="alert alert-info text-center" style="display: none;">
+            <p class="mb-0">Todavía no agregaste nada a tus favoritos.</p>
+        </div>
+    </main>
+
+    <footer class="footer-custom mt-auto py-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="footer-logo">
+                <img src="imgs/logo.png" alt="NBArg Logo" width="100">
+            </div>
+            
+            <div class="footer-info text-end text-white">
+                <p class="mb-1"><strong>Integrantes:</strong> Lizaso, Nicolás | García, Ismael</p>
+                <p class="mb-1"><strong>Materia:</strong> Aplicaciones Web Progresivas</p>
+                <p class="mb-0 small text-celeste">DWM3AP | Turno Mañana | 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
