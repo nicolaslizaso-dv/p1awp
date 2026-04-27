@@ -1,7 +1,6 @@
 const API_KEY = '4966b7b5-4806-4bfe-81cf-8bed6dce9af8';
 const API_BASE = 'https://api.balldontlie.io/v1';
 
-// 1. Referencias al DOM
 const contenedorJugadores = document.getElementById('contenedor-jugadores');
 const contenedorCarrusel = document.getElementById('contenedor-carrusel');
 const seccionEquipos = document.getElementById('seccion-equipos');
@@ -16,11 +15,9 @@ const contEquiposFav = document.getElementById('contenedor-equipos-favoritos');
 const contJugadoresFav = document.getElementById('contenedor-jugadores-favoritos');
 const contenedorProximos = document.getElementById('contenedor-proximos');
 
-// 2. Inicialización única del Modal
 const modalElement = document.getElementById('modal-detalle');
 const modalBS = modalElement ? new bootstrap.Modal(modalElement) : null;
 
-// Solución ARIA: Quita el foco al cerrar para limpiar la consola
 if (modalElement) {
     modalElement.addEventListener('hide.bs.modal', () => {
         if (document.activeElement && modalElement.contains(document.activeElement)) {
@@ -29,12 +26,10 @@ if (modalElement) {
     });
 }
 
-// Variables de estado globales
 let poolJugadores = [];
 let listaEquiposNBA = []; 
 let indiceActual = 0;
 
-// 3. Feedback Visual
 const mostrarCargando = (estado) => {
     if (!loader) return;
     if (estado) {
@@ -46,12 +41,10 @@ const mostrarCargando = (estado) => {
     }
 };
 
-// 4. Fetch con Cache en LocalStorage
 const fetchData = async (endpoint) => {
     const cacheKey = `nba_cache_${endpoint.replace(/\W/g, '_')}`;
     const datosCache = localStorage.getItem(cacheKey);
     if (datosCache) return JSON.parse(datosCache);
-
     mostrarCargando(true);
     try {
         const respuesta = await fetch(`${API_BASE}/${endpoint}`, {
@@ -69,11 +62,9 @@ const fetchData = async (endpoint) => {
         localStorage.setItem(cacheKey, JSON.stringify(datos));
         return datos;
     } catch (error) {
-        // Mostramos el error en la interfaz, no en un alert técnico 
         if (contenedorError) {
             contenedorError.style.display = 'block';
             mensajeError.textContent = error.message;
-            // Hacemos scroll hasta el error para que el usuario lo vea
             contenedorError.scrollIntoView({ behavior: 'smooth' });
         }
         return null;
@@ -82,7 +73,6 @@ const fetchData = async (endpoint) => {
     }
 };
 
-// 5. Lógica de Secciones Dinámicas
 const gestionarVisibilidad = (esBusqueda) => {
     if (esBusqueda) {
         if (seccionEquipos) seccionEquipos.classList.add('d-none');
@@ -93,7 +83,6 @@ const gestionarVisibilidad = (esBusqueda) => {
     }
 };
 
-// 6. Renderizado de Equipos
 const mostrarEquiposCarrusel = (equipos) => {
     if (!contenedorCarrusel) return;
     contenedorCarrusel.innerHTML = '';
@@ -115,8 +104,6 @@ const mostrarEquiposCarrusel = (equipos) => {
     });
 };
 
-// 7. Lógica de Jugadores
-// 7. Lógica de Jugadores (Actualizada con estrella y botón centrado)
 const mostrarJugadoresCards = (jugadores, limpiar = true) => {
     if (!contenedorJugadores) return;
     if (limpiar) contenedorJugadores.innerHTML = '';
@@ -154,7 +141,6 @@ const renderizarSiguienteGrupo = () => {
     if (indiceActual >= poolJugadores.length && btnVerMas) btnVerMas.classList.add('d-none');
 };
 
-// 8. Buscador
 const buscar = async () => {
     const termino = inputBusqueda.value.trim().toLowerCase();
     if (!termino) {
@@ -226,7 +212,6 @@ const mostrarProximosPartidos = (partidos) => {
 if(botonBuscar) botonBuscar.addEventListener('click', buscar);
 btnVerMas?.addEventListener('click', renderizarSiguienteGrupo);
 
-// 10. Vista de Detalle
 const verDetalle = async (id, tipo) => {
     const contenido = document.getElementById('contenido-detalle');
     const titulo = document.getElementById('titulo-detalle');
@@ -234,14 +219,10 @@ const verDetalle = async (id, tipo) => {
 
     try {
         if (tipo === 'teams') {
-            // Generación dinámica de la fecha actual (YYYY-MM-DD) 
             const f = new Date();
             const hoy = f.getFullYear() + "-" + 
                         String(f.getMonth() + 1).padStart(2, '0') + "-" + 
                         String(f.getDate()).padStart(2, '0');
-            
-            // Cálculo dinámico de la temporada: si el mes es menor a Octubre (9), 
-            // se pide la temporada que inició el año anterior.
             const temporada = f.getMonth() < 9 ? f.getFullYear() - 1 : f.getFullYear();
 
             const [resEquipo, resPartidos] = await Promise.all([
@@ -251,7 +232,6 @@ const verDetalle = async (id, tipo) => {
             if (!resEquipo || !resPartidos) return;
 
             const equipo = resEquipo.data;
-            // Filtramos partidos finalizados y ordenamos del más nuevo al más viejo 
             const partidos = resPartidos.data
                 .filter(g => g.status === 'Final')
                 .sort((a, b) => new Date(b.date) - new Date(a.date)) 
@@ -299,19 +279,16 @@ const verDetalle = async (id, tipo) => {
 
         if (modalBS) modalBS.show();
     } catch (err) {
-        // 2. En lugar de un catch vacío o un alert, usamos el contenedor de la UI
         if (contenedorError) {
             contenedorError.style.display = 'block';
             mensajeError.textContent = "Hubo un problema al cargar los detalles. Reintente en unos instantes.";
         }
-        // También lo dejamos en consola para nosotros como desarrolladores
         console.error("Error en verDetalle:", err);
     } finally {
         mostrarCargando(false);
     }
 };
 
-// 11. Favoritos y Persistencia
 const guardarFav = (obj, tipo) => {
     const key = tipo === 'equipos' ? 'nba_fav_equipos' : 'nba_fav_jugadores';
     let favs = JSON.parse(localStorage.getItem(key)) || [];
@@ -323,8 +300,6 @@ const guardarFav = (obj, tipo) => {
         alert('Ya es favorito');
     }
 };
-
-// --- 11. Gestión de Favoritos Separada ---
 
 const cargarEquiposFavoritos = () => {
     if (!contEquiposFav) return;
@@ -385,32 +360,24 @@ const cargarJugadoresFavoritos = () => {
     });
 };
 
-// Actualizamos la función de eliminar para que llame a ambas
 const eliminarFav = (id, tipo) => {
     const key = tipo === 'equipos' ? 'nba_fav_equipos' : 'nba_fav_jugadores';
     let favs = (JSON.parse(localStorage.getItem(key)) || []).filter(i => i.id !== id);
     localStorage.setItem(key, JSON.stringify(favs));
     
-    // Recargamos ambas secciones
     cargarEquiposFavoritos();
     cargarJugadoresFavoritos();
 };
 
-// 12. Inicialización
 const cargarInicio = async () => {
-    // Obtenemos el objeto Date actual del sistema para comparación de hora 
     const ahora = new Date(); 
-    
-    // Formateamos la fecha actual para la consulta de la API (YYYY-MM-DD) 
-    const hoy = ahora.getFullYear() + "-" + 
+        const hoy = ahora.getFullYear() + "-" + 
                 String(ahora.getMonth() + 1).padStart(2, '0') + "-" + 
                 String(ahora.getDate()).padStart(2, '0');
 
-    const [resTeams, resPlayers, resProximos] = await Promise.all([
-        fetchData('teams'),
-        fetchData('players?per_page=35'),
-        fetchData(`games?start_date=${hoy}&per_page=50`) 
-    ]);
+    const resTeams = await fetchData('teams');
+    const resPlayers = await fetchData('players?per_page=35');
+    const resProximos = await fetchData(`games?start_date=${hoy}&per_page=50`);
 
     if (!resTeams || !resPlayers || !resProximos) return;
 
@@ -430,27 +397,21 @@ const cargarInicio = async () => {
     if (resProximos && resProximos.data) {
         const proximos = resProximos.data
             .filter(g => {
-                // Convertimos el horario del partido de la API a un objeto Date 
                 const fechaPartido = new Date(g.status.includes('T') ? g.status : g.date);
-                
-                // Filtramos: No terminados Y que su inicio sea posterior a "ahora" 
                 return g.status !== 'Final' && fechaPartido > ahora;
             })
-            .sort((a, b) => new Date(a.date) - new Date(b.date)) // Orden cronológico 
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
             .slice(0, 10);
         
         mostrarProximosPartidos(proximos);
     }
 };
 
-// --- 12. Inicialización Final ---
 if (seccionJugadores) {
     cargarInicio();
 } else if (contEquiposFav || contJugadoresFav) {
-    // Si estamos en favoritos.html, ejecutamos ambas funciones
     cargarEquiposFavoritos();
     cargarJugadoresFavoritos();
 }
 
-// Botón reintentar
 document.getElementById('boton-reintentar')?.addEventListener('click', () => location.reload());

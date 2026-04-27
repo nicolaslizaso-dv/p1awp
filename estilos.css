@@ -1,13 +1,13 @@
 :root {
     --celeste: #74acdf;
     --blanco: #ffffff;
-    --azul-oscuro: #003049; /* Un azul profundo para dar solidez */
-    --amarillo-sol: #f4d03f; /* El toque del sol de la bandera */
+    --azul-oscuro: #003049;
+    --amarillo-sol: #f4d03f;
     --gris-fondo: #f8f9fa;
 }
 
 html, body {
-    height: 100%; /* Necesario para que el mt-auto funcione */
+    height: 100%;
 }
 
 body {
@@ -66,12 +66,11 @@ header.navbar {
     width: 100%;
 }
 
-/* --- Hero Section --- */
 .hero-section {
     width: 100%;
     min-height: 400px;
     background: linear-gradient(rgba(0, 48, 73, 0.7), rgba(0, 48, 73, 0.7)), 
-                url('imgs/hero-nba.png') center/cover no-repeat fixed; /* Asegurate de tener esta imagen */
+                url('imgs/hero-nba.png') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     margin-bottom: 0 !important;
@@ -83,7 +82,6 @@ header.navbar {
     letter-spacing: 2px;
 }
 
-/* --- Buscador Personalizado --- */
 .search-container {
     border-radius: 50px;
     overflow: hidden;
@@ -120,12 +118,11 @@ header.navbar {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Aside Flotante --- */
 .aside-flotante {
     position: sticky;
-    top: 20px; /* Distancia desde el tope del navegador al scrollear */
-    background-color: rgba(255, 255, 255, 0.85); /* Opacidad para destacar */
-    backdrop-filter: blur(8px); /* Efecto vidriado moderno */
+    top: 20px;
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(8px); 
     border: 2px solid var(--celeste);
     border-radius: 15px;
     z-index: 100;
@@ -143,11 +140,11 @@ header.navbar {
     text-align: center;
 }
 
-/* --- Ajuste de los ítems de partidos --- */
+
 .partido-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra todo el contenido internamente */
+    align-items: center; 
     padding: 15px;
     border-bottom: 1px solid rgba(116, 172, 223, 0.3);
 }
@@ -160,7 +157,7 @@ header.navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Espacio exacto entre elementos */
+    gap: 10px; 
     width: 100%;
 }
 
@@ -173,13 +170,11 @@ header.navbar {
     font-size: 0.85rem;
 }
 
-/* --- Sección Equipos (Carrusel) --- */
 #carruselEquipos {
     border: 1px solid rgba(0, 48, 73, 0.1);
-    background: linear-gradient(to bottom, #ffffff, #f0f7ff) !important; /* Degradado sutil al celeste */
+    background: linear-gradient(to bottom, #ffffff, #f0f7ff) !important;
 }
 
-/* Título de la sección */
 #seccion-equipos h2 {
     color: var(--azul-oscuro);
     position: relative;
@@ -196,7 +191,6 @@ header.navbar {
     background-color: var(--celeste);
 }
 
-/* Logos de equipos en el carrusel */
 .carousel-item img {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
@@ -206,14 +200,12 @@ header.navbar {
     transform: scale(1.1) translateY(-10px);
 }
 
-/* Nombre del equipo */
 .carousel-item h3 {
     color: var(--azul-oscuro);
     font-size: 2.5rem;
     margin-top: 1rem;
 }
 
-/* Botones del Carrusel */
 .carousel-item .btn-primary {
     background-color: var(--azul-oscuro) !important;
     border: none;
@@ -240,7 +232,6 @@ header.navbar {
     border-color: var(--amarillo-sol);
 }
 
-/* Flechas de control del carrusel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     width: 3rem;
@@ -249,7 +240,6 @@ header.navbar {
     border: 2px solid var(--celeste);
 }
 
-/* --- Personalización de Modales --- */
 .modal-content {
     border: none;
     border-radius: 15px;
@@ -270,7 +260,6 @@ header.navbar {
     letter-spacing: 1px;
 }
 
-/* El botón de cerrar (X) lo hacemos blanco para que resalte en el fondo oscuro */
 .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%);
     opacity: 0.8;
@@ -285,7 +274,6 @@ header.navbar {
     background-color: var(--blanco);
 }
 
-/* --- Estilos internos del detalle de Equipo --- */
 .stats-destacadas {
     background-color: #f0f7ff;
     border-radius: 10px;
@@ -301,7 +289,6 @@ header.navbar {
     letter-spacing: 1px;
 }
 
-/* --- Lista de Partidos (Team Detail) --- */
 .partido-fila {
     transition: background 0.3s ease;
     border-left: 4px solid transparent;
@@ -325,7 +312,6 @@ header.navbar {
 .bg-victoria { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
 .bg-derrota { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
 
-/* --- Ficha del Jugador --- */
 .jugador-info-item {
     padding: 12px 0;
     border-bottom: 1px dashed #dee2e6;
@@ -347,7 +333,6 @@ header.navbar {
     color: var(--azul-oscuro);
 }
 
-/* --- Sección Jugadores (Cards) --- */
 #seccion-jugadores h2 {
     color: var(--azul-oscuro);
     position: relative;
@@ -364,21 +349,19 @@ header.navbar {
     background-color: var(--celeste);
 }
 
-/* Contenedor de la Card */
 #contenedor-jugadores .card {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: none !important;
-    border-top: 5px solid var(--celeste) !important; /* Borde superior celeste */
+    border-top: 5px solid var(--celeste) !important;
     background-color: var(--blanco);
 }
 
 #contenedor-jugadores .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 48, 73, 0.15) !important;
-    border-top-color: var(--amarillo-sol) !important; /* Cambia al amarillo en hover */
+    border-top-color: var(--amarillo-sol) !important;
 }
 
-/* Título del Jugador */
 .card-title {
     color: var(--azul-oscuro);
     font-weight: 800;
@@ -386,7 +369,6 @@ header.navbar {
     margin-bottom: 0.5rem;
 }
 
-/* Badge de Posición */
 .card-body .badge {
     background-color: #f0f7ff !important;
     color: var(--celeste) !important;
@@ -395,7 +377,6 @@ header.navbar {
     padding: 0.5em 1em;
 }
 
-/* Botones de la Card */
 .btn-outline-primary {
     border-color: var(--azul-oscuro);
     color: var(--azul-oscuro);
@@ -407,7 +388,6 @@ header.navbar {
     border-color: var(--azul-oscuro);
 }
 
-/* Botón de Agregar (Success) - Lo personalizamos al amarillo sol */
 .btn-success {
     background-color: var(--amarillo-sol) !important;
     border: none !important;
@@ -417,11 +397,10 @@ header.navbar {
 }
 
 .btn-success:hover {
-    background-color: #e5c12b !important; /* Un amarillo un poco más oscuro */
+    background-color: #e5c12b !important;
     transform: scale(1.05);
 }
 
-/* Estilo para el botón "Mostrar más" */
 #btn-ver-mas {
     border: 2px solid var(--azul-oscuro);
     color: var(--azul-oscuro);
@@ -437,7 +416,6 @@ header.navbar {
     color: var(--blanco);
 }
 
-/* --- Botón Estrella Posicionamiento Absoluto --- */
 .btn-estrella {
     position: absolute;
     top: 10px;
@@ -458,13 +436,11 @@ header.navbar {
     color: #e5c12b;
 }
 
-/* Ajuste de la Card para que soporte el posicionamiento absoluto */
 #contenedor-jugadores .card {
     position: relative;
-    padding-top: 10px; /* Espacio extra para que la estrella no tape el contenido */
+    padding-top: 10px; 
 }
 
-/* Estilo para el botón Ver Detalle centrado */
 .card-body .btn-outline-primary {
     border-radius: 20px;
     padding: 8px 20px;
@@ -474,7 +450,7 @@ header.navbar {
 
 .footer-custom {
     background-color: var(--azul-oscuro);
-    border-top: 4px solid var(--celeste); /* Detalle de la bandera */
+    border-top: 4px solid var(--celeste); 
     color: var(--blanco);
 }
 
@@ -491,7 +467,6 @@ header.navbar {
     transform: scale(1.05);
 }
 
-/* --- Estilo Título Mis Favoritos --- */
 .titulo-favoritos {
     color: var(--azul-oscuro);
     font-weight: 800;
@@ -502,7 +477,6 @@ header.navbar {
     padding-bottom: 10px;
 }
 
-/* El detalle celeste debajo del título */
 .titulo-favoritos::after {
     content: '';
     position: absolute;
@@ -518,7 +492,6 @@ header.navbar {
     color: var(--azul-oscuro);
 }
 
-/* Hover suave para las cards de favoritos */
 #contenedor-equipos-favoritos .card,
 #contenedor-jugadores-favoritos .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -530,12 +503,6 @@ header.navbar {
     box-shadow: 0 8px 20px rgba(0, 48, 73, 0.1) !important;
 }
 
-/* ==========================================================================
-   ESTILOS RESPONSIVOS DEFINITIVOS (PROTEGE CARRUSELES)
-   ========================================================================== */
-
-/* --- 1. COMÚN PARA TODAS LAS VISTAS MÓVILES (Hasta 991px) --- */
-/* --- 1. ESTILO BASE PARA MOBILE Y TABLET (Hasta 991px) --- */
 @media (max-width: 991px) {
     .hero-section { height: 250px !important; margin-bottom: 0 !important; }
     
@@ -555,7 +522,6 @@ header.navbar {
         font-size: 0.9rem !important;
     }
 
-    /* ESTILO UNIFICADO DEL PARTIDO: Siempre en un renglón y blanco */
     .partido-item {
         display: flex !important;
         flex-direction: row !important;
@@ -582,8 +548,6 @@ header.navbar {
     #seccion-equipos, #seccion-jugadores { padding: 0 20px !important; }
 }
 
-/* --- 2. VISTA CELULAR (Menos de 550px) --- */
-/* --- A. VISTA MOBILE (Menos de 550px) --- */
 @media (max-width: 549px) {
     .hero-section {
         height: 250px !important;
@@ -609,14 +573,13 @@ header.navbar {
         letter-spacing: 1px;
     }
 
-    /* Forzamos un solo renglón y centrado */
     .partido-item {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important; /* Prohíbe el salto de línea */
+        flex-wrap: nowrap !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 5px 50px 15px 50px !important; /* Padding normal de 15px a los lados */
+        padding: 5px 50px 15px 50px !important; 
         gap: 15px !important;
     }
 
@@ -632,25 +595,23 @@ header.navbar {
         font-weight: bold !important;
         padding: 4px 10px !important;
         border-radius: 20px !important;
-        white-space: nowrap !important; /* Badge siempre íntegro */
-        flex-shrink: 0; /* Evita que el badge se achique si el nombre del equipo es largo */
+        white-space: nowrap !important; 
+        flex-shrink: 0; 
     }
 }
-/* --- 3. VISTA TABLET (550px a 991px) - EFECTO MARQUEE --- */
-/* --- 3. VISTA EXCLUSIVA PARA TABLET (550px a 991px) --- */
+
 @media (min-width: 550px) and (max-width: 991px) {
     .aside-flotante { overflow: hidden !important; }
 
-    /* Forzamos que TODOS los partidos se vean al mismo tiempo en una fila infinita */
+    
     #contenedor-proximos {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
-        width: max-content !important; /* El contenedor se estira según la cantidad de partidos */
+        width: max-content !important; 
         animation: marqueePartidos 40s linear infinite !important;
     }
 
-    /* Cada partido en tablet tiene un ancho fijo para que entren varios en pantalla */
     #contenedor-proximos .carousel-item {
         display: flex !important;
         flex: 0 0 0px !important; 
@@ -666,12 +627,10 @@ header.navbar {
 
 @keyframes marqueePartidos {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); } /* Se desplaza toda la tira de partidos */
+    100% { transform: translateX(-100%); } 
 }
 
-/* --- 4. VISTA ESCRITORIO (Desde 992px) - LISTA FIJA --- */
 @media (min-width: 992px) {
-    /* Usamos el ID para no romper el carrusel de equipos */
     #contenedor-proximos {
         display: flex !important;
         flex-direction: column !important;
